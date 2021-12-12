@@ -1,66 +1,66 @@
 <html>
+  <head>
+    <title>HiMarket - Painel de Controle</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=2"
+    />
+    <link href="/css/admin.css" rel="stylesheet" />
+    <script async src="/js/admin.js"></script>
+  </head>
 
-<head>
-  <title>HiMarket - Painel de Controle</title>
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2">
-  <link href="/css/admin.css" rel="stylesheet">
-  <script async src="/js/admin.js"></script>
-</head>
-
-<body>
+  <body>
     <!-- (C) SIDE BAR -->
-  <nav id="page-sidebar">
-    <strong> <a href="<?URL_HOST?>perfil.php">
-        <span class="ico">&#128100;</span> Meu perfil
-      </a>
-      <a href="<?=URL_HOST?>index.php">
-        <span class="ico">&#9889;</span> Inicio
-      </a>
-      <a href="<?=URL_HOST?>warns.php">
-        <span class="ico">&#9761;</span> Relatórios
-      </a>
-      <a href="<?=URL_HOST?>produtos.php">
-        <span class="ico">&#128190;</span> Produtos
-      </a>
-      <a href="<?=URL_HOST?>vendas.php">
-        <span class="ico">&#128200;</span> Vendas
-      </a>
-      <a href="<?=URL_HOST?>equipe.php">
-        <span class="ico">&#128101;</span> Equipe
-      </a>
-      <a href="<?=URL_HOST?>servidores.php">
-        <span class="ico">&#128209;</span> Servidores
-      </a>
-    </strong>
-  </nav>
-
-  <!-- (D) MAIN CONTENTS -->
-  <div id="page-main">
-    <!-- (D1) NAVIGATION BAR -->
-    <nav id="page-nav">
-      <div id="page-button-side" onclick="admin.sidebar();">&#9776;</div>
-      <h2 class="style">HiMarket</h2>
-      <div id="page-button-out" onclick="admin.bye();">&#9747;</div>
+    <nav id="page-sidebar">
+      <strong>
+        <a href="/perfil"> <span class="ico">&#128100;</span> Meu perfil </a>
+        <a href="<?=URL_HOST?>index.php">
+          <span class="ico">&#9889;</span> Inicio
+        </a>
+        <a href="<?=URL_HOST?>warns.php">
+          <span class="ico">&#9761;</span> Relatórios
+        </a>
+        <a href="<?=URL_HOST?>produtos.php">
+          <span class="ico">&#128190;</span> Produtos
+        </a>
+        <a href="<?=URL_HOST?>vendas.php">
+          <span class="ico">&#128200;</span> Vendas
+        </a>
+        <a href="<?=URL_HOST?>equipe.php">
+          <span class="ico">&#128101;</span> Equipe
+        </a>
+        <a href="<?=URL_HOST?>servidores.php">
+          <span class="ico">&#128209;</span> Servidores
+        </a>
+      </strong>
     </nav>
 
-    <%- include(page, data) %>
+    <!-- (D) MAIN CONTENTS -->
+    <div id="page-main">
+      <!-- (D1) NAVIGATION BAR -->
+      <nav id="page-nav">
+        <div id="page-button-side" onclick="admin.sidebar();">&#9776;</div>
+        <h2 class="style">HiMarket</h2>
+        <div id="page-button-out" onclick="admin.bye();">&#9747;</div>
+      </nav>
 
-    <!-- (D2) PAGE CONTENTS -->
-    <main id="page-contents">
-      <style>
-        .style {
-          text-align: center;
-          font-size: 18px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          color: white;
-          padding: 15px 0;
-          margin: 0;
-        }
-      </style>
-    </main>
-</div>
-</body>
+      <%- include(page, data) %>
 
+      <!-- (D2) PAGE CONTENTS -->
+      <main id="page-contents">
+        <style>
+          .style {
+            text-align: center;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            padding: 15px 0;
+            margin: 0;
+          }
+        </style>
+      </main>
+    </div>
+  </body>
 </html>

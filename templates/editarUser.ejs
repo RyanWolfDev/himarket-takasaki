@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>HiMarkert - Cadastro</title>
+    <title>HiMarkert - Editar Perfil</title>
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
       rel="stylesheet"
@@ -18,19 +18,12 @@
       <div class="hero-body">
         <div class="container has-text-centered">
           <div class="column is-4 is-offset-4">
-            <h3 class="title has-text-grey">HiMarket</h3>
-            <% if(cadSucess) { %>
-            <div class="notification is-success">
-              <p>Cadastro efetuado!</p>
-              <p>
-                Faça login informando o seu usuário e senha
-                <a href="/login">aqui</a>
-              </p>
-            </div>
-            <% } %> <% if(userExist) { %>
+            <h3 class="title has-text-grey">Editar Perfil</h3>
+            <% if(userExist) { %>
             <div class="notification is-info">
               <p>
-                O usuário escolhido já existe. Informe outro e tente novamente.
+                O usuário/email escolhido já existe. Informe outro e tente
+                novamente.
               </p>
             </div>
             <% } %>
@@ -43,6 +36,7 @@
                       type="text"
                       class="input is-large"
                       placeholder="Nome"
+                      value="<%= nome %>"
                       autofocus
                     />
                   </div>
@@ -53,6 +47,7 @@
                       name="email"
                       type="text"
                       class="input is-large"
+                      value="<%= email %>"
                       placeholder="Email"
                     />
                   </div>
@@ -63,6 +58,7 @@
                       name="senha"
                       class="input is-large"
                       type="password"
+                      value="nao-alterada"
                       placeholder="Senha"
                     />
                   </div>
@@ -71,7 +67,7 @@
                   type="submit"
                   class="button is-block is-link is-large is-fullwidth"
                 >
-                  Cadastrar
+                  Salvar
                 </button>
               </form>
             </div>
@@ -81,3 +77,4 @@
     </section>
   </body>
 </html>
+/<?URL_HOST?>perfil.php
