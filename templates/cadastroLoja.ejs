@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HiMarkert - Cadastrar Nova Loja</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+
+<body>
+  <section class="hero is-success is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="column is-4 is-offset-4">
+          <h3 class="title has-text-grey">Cadastrar Nova Loja</h3>
+          <% if(lojaExist) { %>
+            <div class="notification is-info">
+              <p>Nome da loja já foi cadastrado</p>
+            </div>
+          <% } %>
+          <% if(planoFree) { %>
+            <div class="notification is-info">
+              <p>Você excedeu o limite de lojas para o plano free</p>
+            </div>
+            <% } %>
+          <div class="box">
+            <form method="POST">
+              <div class="field">
+                <div class="control">
+                  <input name="nome" type="text" class="input is-large" placeholder="Nome da loja" autofocus required>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <input name="dominio" type="text" class="input is-large" placeholder="Subdominio/Dominio" required>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <input name="servidor" class="input is-large" type="text" placeholder="Servidor Principal" required>
+                </div>
+              </div>
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="integracao" value="minecraft" checked>
+                  Minecraft
+                </label>
+                <label class="radio">
+                  <input type="radio" name="integracao" value="mta">
+                  MTA
+                </label>
+              </div>
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="plano" value="gratis" checked>
+                  Plano Gratis
+                </label>
+                <label class="radio">
+                  <input type="radio" name="plano" value="premium">
+                  Plano Premium
+                </label>
+              </div>
+              <br>
+              <button type="submit" class="button is-block is-link is-large is-fullwidth">Cadastrar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

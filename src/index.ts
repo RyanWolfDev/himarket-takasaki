@@ -17,6 +17,7 @@ if (process.env.SECRET_SESSION) {
     session({
       secret: process.env.SECRET_SESSION,
       resave: true,
+      saveUninitialized: false,
     })
   );
 }

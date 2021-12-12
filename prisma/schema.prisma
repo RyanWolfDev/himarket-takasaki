@@ -12,4 +12,29 @@ model Users {
   user_name     String @db.VarChar(255)
   user_email    String @unique @db.VarChar(255)
   user_password String @db.VarChar(255)
+
+  lojas Lojas[]
+}
+
+model Lojas {
+  id                Int     @id @default(autoincrement())
+  donoId            Int
+  dono              Users   @relation(fields: [donoId], references: [user_id])
+  nomeLoja          String  @unique @db.VarChar(255)
+  dominio           String  @unique @db.VarChar(255)
+  servidorPrincipal String  @db.VarChar(255)
+  expirar           BigInt  @db.BigInt
+  plano             String  @db.VarChar(255)
+  equipe            String? @db.VarChar(255)
+  produtos          String? @db.VarChar(255)
+  pedidos           String? @db.VarChar(255)
+  vendas            String? @db.VarChar(255)
+  relatorios        String? @db.VarChar(255)
+  servidores        String? @db.VarChar(255)
+  termos            String? @db.VarChar(255)
+  configuracoes     String? @db.VarChar(255)
+  noticias          String? @db.VarChar(255)
+  redes             String? @db.VarChar(255)
+  modulos           String? @db.VarChar(255)
+  integracao        String  @db.VarChar(255)
 }
