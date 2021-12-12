@@ -8,7 +8,7 @@ const login: Controller = (db) => {
   const router = Router();
 
   router.get("/", (req, res) => {
-    res.render("login");
+    res.render("login", { userOrPassInvalid: false });
   });
 
   router.post("/", async (req, res) => {
@@ -25,9 +25,9 @@ const login: Controller = (db) => {
       req.session.username = user.user_name;
 
       req.session.save();
-      res.send("OK");
+      res.redirect("/");
     } else {
-      res.send("Login ou Senha incorretos");
+      res.render("login", { userOrPassInvalid: true });
     }
   });
 

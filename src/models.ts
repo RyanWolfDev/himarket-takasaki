@@ -13,7 +13,6 @@ export interface CadastroLojaDto {
 }
 
 export interface LoginDto {
-  req: string;
   email: string;
   password: string;
 }

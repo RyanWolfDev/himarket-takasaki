@@ -1,57 +1,64 @@
-<!-- <link rel="stylesheet" href="admin.css"> -->
-<script src="/js/admin.js"></script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HiMarket - Login</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/login.css" />
+  </head>
 
-<script>
-  function login() {
-    event.preventDefault();
-    admin.ajax({
-      url: '/login',
-      data: {
-        req: "in",
-        email: document.getElementById("user_email").value,
-        password: document.getElementById("user_password").value
-      },
-      ok: () => { location.href = '/' },
-    });
-    return false;
-  }
-</script>
+  <body>
+    <section class="hero is-success is-fullheight">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="column is-4 is-offset-4">
+            <h3 class="title has-text-grey">Login HiMarket</h3>
+            <% if(userOrPassInvalid) { %>
+            <div class="notification is-danger">
+              <p>ERRO: Email ou senha inválidos.</p>
+            </div>
+            <% } %>
+            <div class="box">
+              <form method="POST">
+                <div class="field">
+                  <div class="control">
+                    <input
+                      name="email"
+                      name="text"
+                      class="input is-large"
+                      placeholder="Seu email"
+                      autofocus=""
+                    />
+                  </div>
+                </div>
 
-<!-- (C) CSS -->
-<style>
-  #login-form {
-    max-width: 320px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #eee;
-    border: 1px solid #ccc;
-  }
-
-  #login-form input {
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  .center {
-    display: flex;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-</style>
-
-<!-- (D) LOGIN FORM -->
-
-<div class="center">
-  <form id="login-form" onsubmit="login();">
-    <h1>LOGIN</h1>
-    <input type="email" placeholder="Email" id="user_email" required />
-    <input type="password" placeholder="Password" id="user_password" required />
-    <input type="submit" value="Sign In" />
-  </form>
-
-</div>
+                <div class="field">
+                  <div class="control">
+                    <input
+                      name="password"
+                      class="input is-large"
+                      type="password"
+                      placeholder="Sua senha"
+                    />
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  class="button is-block is-link is-large is-fullwidth"
+                >
+                  Entrar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
