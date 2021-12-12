@@ -1,19 +1,14 @@
 import { Controller } from "../controlers_handler";
 import { Router } from "express";
 import dayjs from "dayjs";
-
-interface CadastroLojaDto {
-  nome: string;
-  dominio: string;
-  servidor: string;
-  plano: "gratis" | "premium";
-  integracao: "minecraft" | "mta";
-}
+import { CadastroLojaDto } from "../models";
 
 const novaLoja: Controller = (db) => {
   const router = Router();
 
   router.get("/", (req, res) => {
+    if (!req.session.idDb) return res.redirect("/login");
+
     res.render("cadastroLoja", {
       lojaExist: false,
       planoFree: false,
@@ -28,7 +23,7 @@ const novaLoja: Controller = (db) => {
     if (!req.session.idDb) return res.redirect("/login");
 
     if (cad.plano === "gratis") {
-      const lojaFinded = await db.lojas.count({
+      const lojasPremium = await db.lojas.count({
         where: {
           AND: {
             donoId: req.session.idDb,
@@ -36,12 +31,18 @@ const novaLoja: Controller = (db) => {
           },
         },
       });
-      if (lojaFinded === 1) {
-        res.render("cadastroLoja", {
+
+      const totalLojas = await db.lojas.count({
+        where: {
+          donoId: req.session.idDb,
+        },
+      });
+
+      if (lojasPremium === 0 && totalLojas > 0) {
+        return res.render("cadastroLoja", {
           planoFree: true,
           lojaExist: false,
         });
-        return;
       }
     }
 

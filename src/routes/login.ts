@@ -2,18 +2,7 @@ import { Controller } from "../controlers_handler";
 import { Router } from "express";
 import bcrypt from "bcrypt";
 
-interface LoginDto {
-  req: string;
-  email: string;
-  password: string;
-}
-
-declare module "express-session" {
-  interface SessionData {
-    idDb: number;
-    username: string;
-  }
-}
+import { LoginDto } from "../models";
 
 const login: Controller = (db) => {
   const router = Router();
@@ -36,7 +25,7 @@ const login: Controller = (db) => {
       req.session.username = user.user_name;
 
       req.session.save();
-      res.send("success");
+      res.send("OK");
     } else {
       res.send("Login ou Senha incorretos");
     }

@@ -1,12 +1,7 @@
 import { Controller } from "../controlers_handler";
 import { Router } from "express";
 import bcrypt from "bcrypt";
-
-interface CadastroDto {
-  nome: string;
-  email: string;
-  senha: string;
-}
+import { CadastroDto } from "../models";
 
 const cadastro: Controller = (db) => {
   const router = Router();
