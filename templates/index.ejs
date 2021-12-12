@@ -1,6 +1,7 @@
 <h2 class="h2">Suas lojas</h2>
-<br>
-<a href="/novaloja" class="h2">Criar Loja</a>
+<div class="center">
+  <a class="novaloja" href="/novaloja">Criar Loja</a>
+</div>
 <div class="table-wrapper">
   <table class="fl-table">
     <thead>
@@ -13,22 +14,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          <?echo $shopname?>
-        </td>
-        <td>
-          <?echo $domainshopname?>
-        </td>
-        <td>
-          <?echo $mainshopserver?>
-        </td>
-        <td>
-          <?echo $expirar?>
-        </td>
-        <td><a class="aa" href="">Editar</a><br><a class="aa" href="">Excluir</a>
-        </td>
-      </tr>
+      <% lojas.forEach(loja => { %>
+        <tr>
+          <td>
+            <%= loja.nomeLoja %>
+          </td>
+          <td>
+            <%= loja.dominio %>
+          </td>
+          <td>
+            <%= loja.servidorPrincipal %>
+          </td>
+          <td class="plano">
+            <%= loja.plano %>
+          </td>
+          <td><a class="aa" href="">Editar</a><br><a class="aa" href="">Excluir</a>
+          </td>
+        </tr>
+      <% }); %>
     <tbody>
   </table>
 </div>
@@ -117,5 +120,24 @@
 
   .fl-table tr:nth-child(even) {
     background: #F8F8F8;
+  }
+
+  .novaloja{
+    text-align: center;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black;
+    padding: 12px 0;
+  }
+
+  .center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .plano {
+    text-transform: capitalize;
   }
 </style>
