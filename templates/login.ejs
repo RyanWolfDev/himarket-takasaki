@@ -1,0 +1,55 @@
+<!-- <link rel="stylesheet" href="admin.css"> -->
+
+<script>
+  function login() {
+    admin.ajax({
+      url: url.host + "ajax-session.php",
+      data: {
+        req: "in",
+        email: document.getElementById("user_email").value,
+        password: document.getElementById("user_password").value
+      },
+      ok: () => { location.reload(); }
+    });
+    return false;
+  }
+</script>
+
+<!-- (C) CSS -->
+<style>
+  #login-form {
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #eee;
+    border: 1px solid #ccc;
+  }
+
+  #login-form input {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .center {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+</style>
+
+<!-- (D) LOGIN FORM -->
+
+<div class="center">
+  <form id="login-form" onsubmit="return login();">
+    <h1>LOGIN</h1>
+    <input type="email" placeholder="Email" id="user_email" required />
+    <input type="password" placeholder="Password" id="user_password" required />
+    <input type="submit" value="Sign In" />
+  </form>
+
+</div>

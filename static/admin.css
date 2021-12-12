@@ -1,0 +1,84 @@
+/* (A) FONT & FORM */
+* { font-family: Arial, sans-serif; }
+h1, h2, h3, h4, h5, h6 { margin: 5px 0; }
+button, input, textarea {
+  box-sizing: border-box; padding: 10px;
+}
+button, input[type=button], input[type=submit] {
+  color: #fff; background: #a92121;
+  border: 0; cursor: pointer;
+}
+
+/* (B) NOW LOADING */
+#page-loader {
+  position: fixed; top: 0; left: 0; z-index: 999;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex; align-items: center; justify-content: center;
+  visibility: hidden; opacity: 0;
+  transition: opacity 0.2s;
+}
+#page-loader.active { visibility: visible; opacity: 1; }
+
+/* (C) PAGE LAYOUT */
+body {
+  padding: 0; margin: 0; display: flex;
+  align-items: stretch; min-height: 100vh;
+}
+#page-sidebar { width: 200px; }
+#page-main { flex-grow: 1; }
+
+/* (D) SIDEBAR */
+/* (D1) SIDEBAR ITSELF */
+#page-sidebar {
+  background: #353535;
+  transition: width 0.2s;
+}
+
+/* (D2) SIDEBAR ITEMS */
+#page-sidebar a {
+  box-sizing: border-box; display: block;
+  width: 100%; padding: 10px;
+  color: #20d793; text-decoration: none;
+  border-bottom: 1px solid #555;
+  font-style: bold;
+}
+#page-sidebar a:hover { background: #ffffff; }
+
+/* (D3) SIDEBAR ICONS */
+#page-sidebar .ico {
+  display: inline-block; width:24px; text-align: center;
+  font-size: 15px; line-height: 20px; color: #f48042;
+}
+
+/* (D4) HIDE SIDEBAR ON SMALL SCREEN */
+@media (max-width: 768px) {
+  #page-sidebar { width: 0; visibility: hidden; }
+  #page-sidebar.active { width: 200px; visibility: visible; }
+}
+
+/* (E) PAGE MAIN */
+/* (E1) MAIN SECTION ITSELF */
+#page-main { background: #f7f9fa; }
+
+/* (E2) NAVIGATION BAR */
+#page-nav {
+  position: relative; height: 50px;
+  color: #fff; background: #474747;
+}
+
+/* (E3) NAVIGATION BAR BUTTONS */
+#page-button-side, #page-button-out {
+  position: absolute; top: 0;
+  width: 50px; height: 50px; line-height: 50px;
+  font-size: 28px; font-weight: bold; text-align: center;
+  background: #20d793/*#87260a*/; cursor: pointer;
+}
+#page-button-side { display: none; left: 0; }
+#page-button-out { right: 0; }
+@media (max-width: 768px) {
+  #page-button-side { display: block !important; }
+}
+
+/* (E4) CONTENTS */
+#page-contents { padding: 20px; }

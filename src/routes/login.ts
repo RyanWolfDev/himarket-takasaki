@@ -1,17 +1,17 @@
-import { Router } from "express";
 import { Controller } from "../controlers_handler";
+import { Router } from "express";
 
-const teste: Controller = () => {
+const login: Controller = () => {
   const router = Router();
 
   router.get("/", (req, res) => {
-    res.send("<h1>grande dia</h1>");
+    res.render("login");
   });
 
   return {
     router,
-    url: "/teste",
+    url: "/login",
   };
 };
 
-export default teste;
+export default login;
