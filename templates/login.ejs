@@ -1,15 +1,17 @@
 <!-- <link rel="stylesheet" href="admin.css"> -->
+<script src="/js/admin.js"></script>
 
 <script>
   function login() {
+    event.preventDefault();
     admin.ajax({
-      url: url.host + "ajax-session.php",
+      url: '/login',
       data: {
         req: "in",
         email: document.getElementById("user_email").value,
         password: document.getElementById("user_password").value
       },
-      ok: () => { location.reload(); }
+      ok: () => { alert("Login Successful"); },
     });
     return false;
   }
@@ -45,7 +47,7 @@
 <!-- (D) LOGIN FORM -->
 
 <div class="center">
-  <form id="login-form" onsubmit="return login();">
+  <form id="login-form" onsubmit="login();">
     <h1>LOGIN</h1>
     <input type="email" placeholder="Email" id="user_email" required />
     <input type="password" placeholder="Password" id="user_password" required />

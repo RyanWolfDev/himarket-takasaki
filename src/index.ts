@@ -3,11 +3,24 @@ import dotenv from "dotenv";
 import path from "path";
 import { PrismaClient } from "@prisma/client";
 import handleControler from "./controlers_handler";
+import formData from "express-form-data";
+import session from "express-session";
 
 dotenv.config();
 
 const app = express();
-app.use(express.json());
+app.use(formData.parse());
+app.use(express.urlencoded({ extended: true }));
+
+if (process.env.SECRET_SESSION) {
+  app.use(
+    session({
+      secret: process.env.SECRET_SESSION,
+      resave: true,
+    })
+  );
+}
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "..", "templates"));
 app.use(express.static(path.join(__dirname, "..", "static")));
