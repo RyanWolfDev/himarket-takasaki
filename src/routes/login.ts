@@ -23,6 +23,7 @@ const login: Controller = (db) => {
     if (user && (await bcrypt.compare(password, user.user_password))) {
       req.session.idDb = user.user_id;
       req.session.username = user.user_name;
+      req.session.admLevel = user.permissions;
 
       req.session.save();
       res.redirect("/");

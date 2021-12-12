@@ -21,5 +21,6 @@ declare module "express-session" {
   interface SessionData {
     idDb: number;
     username: string;
+    admLevel: number;
   }
 }

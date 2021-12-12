@@ -12,6 +12,7 @@ model Users {
   user_name     String @db.VarChar(255)
   user_email    String @unique @db.VarChar(255)
   user_password String @db.VarChar(255)
+  permissions   Int    @default(0)
 
   lojas Lojas[]
 }
