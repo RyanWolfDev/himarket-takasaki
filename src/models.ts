@@ -24,3 +24,10 @@ declare module "express-session" {
     admLevel: number;
   }
 }
+
+export enum AdmLevel {
+  gratis,
+  premium,
+  subuser,
+  admin,
+}

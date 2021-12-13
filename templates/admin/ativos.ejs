@@ -16,27 +16,22 @@
     </thead>
     <tbody>
       <% lojas.forEach(loja => { %>
-        <tr>
-          <td>
-            <%= loja.nomeLoja %>
-          </td>
-          <td>
-            <%= loja.dominio %>
-          </td>
-          <td>
-            <%= loja.servidorPrincipal %>
-          </td>
-          <td class="plano">
-            <%= loja.plano %>
-          </td>
-          <td>
-            <%= loja.donoID %>
-          </td>
-          <td><a class="aa" href="">Editar</a><br><a class="aa" href="">Suspender</a><br><a class="aa" href="">Excluir</a>
-          </td>
-        </tr>
+      <tr>
+        <td><%= loja.nomeLoja %></td>
+        <td><%= loja.dominio %></td>
+        <td><%= loja.servidorPrincipal %></td>
+        <td class="plano"><%= loja.plano %></td>
+        <td><%= loja.donoID %></td>
+        <td>
+          <a class="aa" href="">Editar</a><br /><a class="aa" href=""
+            >Suspender</a
+          ><br /><a class="aa" href="">Excluir</a>
+        </td>
+      </tr>
       <% }); %>
-    <tbody>
+    </tbody>
+
+    <tbody></tbody>
   </table>
 </div>
 <style>
@@ -80,7 +75,6 @@
     padding: 15px 0;
   }
 
-
   /* Table Styles */
 
   .table-wrapper {
@@ -113,9 +107,8 @@
 
   .fl-table thead th {
     color: #ffffff;
-    background: #4FC3A1;
+    background: #4fc3a1;
   }
-
 
   .fl-table thead th:nth-child(odd) {
     color: #ffffff;
@@ -123,10 +116,10 @@
   }
 
   .fl-table tr:nth-child(even) {
-    background: #F8F8F8;
+    background: #f8f8f8;
   }
 
-  .novaloja{
+  .novaloja {
     text-align: center;
     font-size: 10px;
     text-transform: uppercase;

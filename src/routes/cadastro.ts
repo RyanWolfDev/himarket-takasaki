@@ -34,7 +34,7 @@ const cadastro: Controller = (db) => {
   });
 
   return {
-    url: "/cadastro",
+    url: "/cadastrar",
     router,
   };
 };

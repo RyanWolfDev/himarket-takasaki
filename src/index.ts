@@ -5,12 +5,14 @@ import { PrismaClient } from "@prisma/client";
 import handleControler from "./controlers_handler";
 import formData from "express-form-data";
 import session from "express-session";
+import { adminAcessController } from "./middlewares";
 
 dotenv.config();
 
 const app = express();
 app.use(formData.parse());
 app.use(express.urlencoded({ extended: true }));
+app.use(adminAcessController);
 
 if (process.env.SECRET_SESSION) {
   app.use(
