@@ -17,11 +17,11 @@
     <tbody>
       <% lojas.forEach(loja => { %>
       <tr>
+        <td><%= loja.donoId %></td>
         <td><%= loja.nomeLoja %></td>
         <td><%= loja.dominio %></td>
         <td><%= loja.servidorPrincipal %></td>
         <td class="plano"><%= loja.plano %></td>
-        <td><%= loja.donoID %></td>
         <td>
           <a class="aa" href="">Editar</a><br /><a class="aa" href=""
             >Suspender</a

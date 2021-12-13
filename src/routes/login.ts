@@ -2,7 +2,7 @@ import { Controller } from "../controlers_handler";
 import { Router } from "express";
 import bcrypt from "bcrypt";
 
-import { LoginDto } from "../models";
+import { LoginDto, AdmLevel } from "../models";
 
 const login: Controller = (db) => {
   const router = Router();
@@ -26,6 +26,10 @@ const login: Controller = (db) => {
       req.session.admLevel = user.permissions;
 
       req.session.save();
+      if (user.permissions === AdmLevel.admin) {
+        return res.redirect("/admin");
+      }
+
       res.redirect("/");
     } else {
       res.render("login", { userOrPassInvalid: true });

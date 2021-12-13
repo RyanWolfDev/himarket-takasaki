@@ -12,7 +12,6 @@ dotenv.config();
 const app = express();
 app.use(formData.parse());
 app.use(express.urlencoded({ extended: true }));
-app.use(adminAcessController);
 
 if (process.env.SECRET_SESSION) {
   app.use(
@@ -24,6 +23,7 @@ if (process.env.SECRET_SESSION) {
   );
 }
 
+app.use(adminAcessController);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "..", "templates"));
 app.use(express.static(path.join(__dirname, "..", "static")));
