@@ -6,7 +6,11 @@ const ativos: Controller = (db) => {
 
   router.get("/", async (req, res) => {
     const lojas = await db.lojas.findMany();
-    res.render("admin/template", { page: "ativos", data: { lojas } });
+    res.render("admin/template", {
+      page: "ativos",
+      data: { lojas },
+      title: "Ativos",
+    });
   });
 
   return {

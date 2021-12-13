@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/css/tables.css" />
+
+<h2 class="title">Membros da equipe admistradora</h2>
+<div class="center">
+  <a class="novaloja" href="/novaloja">Adicionar membro da equipe</a>
+</div>
+<div class="table-wrapper">
+  <table class="fl-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% admins.forEach(user => { %>
+      <tr>
+        <td><%= user.user_name %></td>
+        <td><%= user.user_email %></td>
+        <td>
+          <a class="links aa" href="">Editar</a><br /><a class="aa" href=""
+            >Suspender</a
+          ><br /><a class="links aa" href="">Remover</a>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+
+    <tbody></tbody>
+  </table>
+</div>
