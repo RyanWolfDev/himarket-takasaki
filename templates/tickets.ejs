@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/css/tables.css" />
+
+<h2 class="title">Tickets cadastrados</h2>
+<div class="center">
+  <a class="novaloja" href="/criarticket">Cadastrar ticket</a>
+</div>
+<div class="table-wrapper">
+  <table class="fl-table">
+    <thead>
+      <tr>
+        <th>Usuário</th>
+        <th>E-mail</th>
+        <th>Assunto</th>
+        <th>Mensagem</th>
+        <th>Serviços ativos</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tickets.forEach(tickets => { %>
+      <tr>
+        <td><%= tickets.user_name %></td>
+        <td><%= tickets.user_email %></td>
+        <td><%= tickets.user_message %></td>
+        <td><%= tickets.user_services %></td>
+        <td class="plano"><%= loja.plano %></td>
+        <td>
+          <a class="aa" href="">Editar</a><br /><a class="aa" href=""
+            >Suspender</a
+          ><br /><a class="aa" href="">Excluir</a>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+
+    <tbody></tbody>
+  </table>
+</div>
