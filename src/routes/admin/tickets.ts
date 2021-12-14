@@ -1,6 +1,6 @@
 import { Controller } from "../../controlers_handler";
 import { Router } from "express";
-import { AdmLevel, StatusTicket } from "../../models";
+import { AdmLevel, StatusTicket, TicketDto } from "../../models";
 
 const tickets: Controller = (db) => {
   const router = Router();
@@ -15,8 +15,6 @@ const tickets: Controller = (db) => {
         },
       },
     });
-
-    console.log(tickets);
 
     const finalTickets = tickets.map((ticket) => ({
       ...ticket,
@@ -36,6 +34,65 @@ const tickets: Controller = (db) => {
       title: "Tickets",
       data: { tickets: finalTickets },
     });
+  });
+
+  router.get("/:id", async (req, res) => {
+    const id = Number(req.params.id);
+    if (isNaN(id)) return res.redirect("/admin/tickets");
+    const ticket = await db.tickets.findFirst({
+      include: {
+        mensagens: true,
+      },
+      where: {
+        id,
+      },
+    });
+
+    if (!ticket) return res.redirect("/admin/tickets");
+
+    const data = {
+      id,
+      assunto: ticket.mensagens[0].assunto,
+    };
+
+    res.render("enviarResposta", { fieldsEmpthy: false, ticket: data });
+  });
+
+  router.post("/:id", async (req, res) => {
+    if (!req.session.idDb) return;
+    const id = Number(req.params.id);
+    if (isNaN(id)) return res.redirect("/admin/tickets");
+
+    const ticket = await db.tickets.findFirst({
+      include: {
+        mensagens: true,
+      },
+      where: {
+        id,
+      },
+    });
+
+    if (!ticket) return res.redirect("/admin/tickets");
+    const { assunto, mensagem } = req.body as TicketDto;
+
+    if (!assunto || !mensagem) {
+      const data = {
+        id,
+        assunto: ticket.mensagens[0].assunto,
+      };
+      return res.render("enviarResposta", { fieldsEmpthy: true, ticket: data });
+    }
+
+    await db.mensagens.create({
+      data: {
+        assunto,
+        mensagem,
+        usuario: req.session.idDb,
+        ticket: ticket.id,
+      },
+    });
+
+    res.redirect("/admin/tickets");
   });
 
   return {

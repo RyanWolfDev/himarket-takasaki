@@ -27,9 +27,8 @@
         <td class="plano"><%= ticket.mensagem.usuarioModel.permissions %></td>
         <td class="plano"><%= ticket.status %></td>
         <td>
-          <a class="aa" href="">Reponder</a><br /><a class="aa" href=""
-            >Fechar</a
-          ><br />
+          <a class="aa" href="/admin/tickets/<%= ticket.id %>">Reponder</a
+          ><br /><a class="aa" href="">Fechar</a><br />
         </td>
       </tr>
       <% }); %>
