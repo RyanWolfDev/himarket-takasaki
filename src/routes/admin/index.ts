@@ -11,7 +11,6 @@ const index: Controller = () => {
       title: "Inicio",
     });
   });
-
   return {
     url: "/admin",
     router,

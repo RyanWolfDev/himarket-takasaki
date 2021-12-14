@@ -20,16 +20,16 @@
     <tbody>
       <% tickets.forEach(ticket => { %>
       <tr>
-        <td><%= ticket.usuarioModel.user_name %></td>
-        <td><%= ticket.usuarioModel.user_email %></td>
-        <td><%= ticket.assunto %></td>
-        <td><%= ticket.mensagem %></td>
-        <td class="plano"><%= ticket.tipoCliente %></td>
+        <td><%= ticket.mensagem.usuarioModel.user_name %></td>
+        <td><%= ticket.mensagem.usuarioModel.user_email %></td>
+        <td><%= ticket.mensagem.assunto %></td>
+        <td><%= ticket.mensagem.mensagem %></td>
+        <td class="plano"><%= ticket.mensagem.usuarioModel.permissions %></td>
         <td class="plano"><%= ticket.status %></td>
         <td>
-          <a class="aa" href="">Editar</a><br /><a class="aa" href=""
-            >Suspender</a
-          ><br /><a class="aa" href="">Excluir</a>
+          <a class="aa" href="">Reponder</a><br /><a class="aa" href=""
+            >Fechar</a
+          ><br />
         </td>
       </tr>
       <% }); %>

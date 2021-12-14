@@ -19,16 +19,36 @@
     <tbody>
       <% tickets.forEach(ticket => { %>
       <tr>
-        <td><%= ticket.usuarioModel.user_name %></td>
-        <td><%= ticket.usuarioModel.user_email %></td>
-        <td><%= ticket.assunto %></td>
-        <td><%= ticket.mensagem %></td>
+        <td><%= ticket.mensagem.usuarioModel.user_name %></td>
+        <td><%= ticket.mensagem.usuarioModel.user_email %></td>
+        <td><%= ticket.mensagem.assunto %></td>
+        <td><%= ticket.mensagem.mensagem %></td>
         <td class="plano"><%= ticket.status %></td>
-        <td>
-          <a class="aa" href="">Editar</a><br /><a class="aa" href=""
-            >Suspender</a
-          ><br /><a class="aa" href="">Excluir</a>
-        </td>
+        <td><a class="aa" href="">Encerrar</a><br /></td>
+      </tr>
+      <% }); %>
+    </tbody>
+
+    <tbody></tbody>
+  </table>
+</div>
+<div class="table-wrapper">
+  <table class="fl-table">
+    <thead>
+      <tr>
+        <th>Administrador</th>
+        <th>Ticket respondido</th>
+        <th>Resposta</th>
+        <th>Status Ticket</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% respostas.forEach(resp => { %>
+      <tr>
+        <td><%= resp.usuarioModel.user_name %></td>
+        <td><%= resp.assunto %></td>
+        <td><%= resp.mensagem %></td>
+        <td class="plano"><%= resp.status %></td>
       </tr>
       <% }); %>
     </tbody>

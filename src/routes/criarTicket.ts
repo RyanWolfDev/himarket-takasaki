@@ -16,10 +16,15 @@ const criarTicket: Controller = (db) => {
     if (!assunto || !mensagem)
       return res.render("criarTicket", { fieldsEmpthy: true });
 
-    await db.tickets.create({
+    const ticket = await db.tickets.create({
+      data: {},
+    });
+
+    await db.mensagens.create({
       data: {
-        assunto,
+        ticket: ticket.id,
         mensagem,
+        assunto,
         usuario: req.session.idDb,
       },
     });

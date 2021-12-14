@@ -8,13 +8,26 @@ const tickets: Controller = (db) => {
   router.get("/", async (req, res) => {
     const tickets = await db.tickets.findMany({
       include: {
-        usuarioModel: true,
+        mensagens: {
+          include: {
+            usuarioModel: true,
+          },
+        },
       },
     });
 
+    console.log(tickets);
+
     const finalTickets = tickets.map((ticket) => ({
       ...ticket,
-      tipoCliente: AdmLevel[ticket.usuarioModel.permissions].toString(),
+      mensagem: {
+        ...ticket.mensagens[0],
+        usuarioModel: {
+          ...ticket.mensagens[0].usuarioModel,
+          permissions:
+            AdmLevel[ticket.mensagens[0].usuarioModel.permissions].toString(),
+        },
+      },
       status: StatusTicket[ticket.status].toString(),
     }));
 

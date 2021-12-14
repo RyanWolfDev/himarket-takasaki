@@ -11,19 +11,41 @@ const ticket: Controller = (db) => {
 
     const tickets = await db.tickets.findMany({
       where: {
-        usuario: req.session.idDb,
+        mensagens: {
+          some: {
+            usuario: req.session.idDb,
+          },
+        },
       },
       include: {
-        usuarioModel: true,
+        mensagens: {
+          include: {
+            usuarioModel: true,
+          },
+        },
       },
     });
 
-    const finalTickets = tickets.map((ticket) => ({
+    const fistMessageTickets = tickets.map((ticket) => ({
       ...ticket,
       status: StatusTicket[ticket.status].toString(),
+      mensagem: ticket.mensagens[0],
     }));
 
-    res.render("template", { page: "ticket", data: { tickets: finalTickets } });
+    const respostasRaw = tickets.map((ticket) => {
+      ticket.mensagens.splice(0, 1);
+      return ticket.mensagens.map((msg) => ({
+        ...msg,
+        status: StatusTicket[ticket.status].toString(),
+      }));
+    });
+
+    const respostas = respostasRaw.reduce((acc, curr) => [...acc, ...curr], []);
+
+    res.render("template", {
+      page: "ticket",
+      data: { tickets: fistMessageTickets, respostas },
+    });
   });
 
   return {

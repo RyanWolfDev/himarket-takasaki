@@ -15,7 +15,7 @@ model Users {
   permissions   Int    @default(0)
 
   lojas   Lojas[]
-  tickets Tickets[]
+  tickets Mensagens[]
 }
 
 model Lojas {
@@ -42,10 +42,17 @@ model Lojas {
 }
 
 model Tickets {
-  id           Int    @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
+  status    Int         @default(0)
+  mensagens Mensagens[]
+}
+
+model Mensagens {
+  id           Int     @id @default(autoincrement())
   usuario      Int
-  usuarioModel Users  @relation(fields: [usuario], references: [user_id])
-  assunto      String @db.VarChar(50)
-  mensagem     String @db.Text
-  status       Int    @default(0)
+  usuarioModel Users   @relation(fields: [usuario], references: [user_id])
+  ticket       Int
+  ticketsModel Tickets @relation(fields: [ticket], references: [id])
+  assunto      String  @db.VarChar(50)
+  mensagem     String  @db.Text
 }
