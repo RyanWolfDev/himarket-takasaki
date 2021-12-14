@@ -10,6 +10,7 @@ const ativos: Controller = (db) => {
       page: "ativos",
       data: { lojas },
       title: "Ativos",
+      session: req.session,
     });
   });
 

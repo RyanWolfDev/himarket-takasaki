@@ -15,6 +15,7 @@ const equipe: Controller = (db) => {
       page: "equipe",
       data: { admins },
       title: "Equipe",
+      session: req.session,
     });
   });
 

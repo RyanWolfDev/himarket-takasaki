@@ -9,6 +9,7 @@ const index: Controller = () => {
       page: "index",
       data: null,
       title: "Inicio",
+      session: req.session,
     });
   });
   return {

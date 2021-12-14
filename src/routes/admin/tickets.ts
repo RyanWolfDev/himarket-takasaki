@@ -33,6 +33,7 @@ const tickets: Controller = (db) => {
       page: "ticket",
       title: "Tickets",
       data: { tickets: finalTickets },
+      session: req.session,
     });
   });
 
