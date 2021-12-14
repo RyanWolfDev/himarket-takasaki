@@ -95,6 +95,22 @@ const tickets: Controller = (db) => {
     res.redirect("/admin/tickets");
   });
 
+  router.get("/:id/fechar", async (req, res) => {
+    const id = Number(req.params.id);
+    if (isNaN(id)) return res.redirect("/admin/tickets");
+
+    await db.tickets.update({
+      where: {
+        id,
+      },
+      data: {
+        status: StatusTicket.fechado,
+      },
+    });
+
+    res.redirect("/admin/tickets");
+  });
+
   return {
     url: "/admin/tickets",
     router,

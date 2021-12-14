@@ -28,7 +28,9 @@
         <td class="plano"><%= ticket.status %></td>
         <td>
           <a class="aa" href="/admin/tickets/<%= ticket.id %>">Reponder</a
-          ><br /><a class="aa" href="">Fechar</a><br />
+          ><br /><a class="aa" href="/admin/tickets/<%= ticket.id %>/fechar"
+            >Fechar</a
+          ><br />
         </td>
       </tr>
       <% }); %>
