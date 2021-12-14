@@ -18,3 +18,7 @@ input {
 p {
   font-weight: 700;
 }
+
+.mensagem {
+  margin-bottom: 1rem;
+}

@@ -2,15 +2,16 @@ import { Controller } from "../controlers_handler";
 import { Router } from "express";
 import bcrypt from "bcrypt";
 import { CadastroDto } from "../models";
+import { accessController } from "../middlewares";
 
 const cadastro: Controller = (db) => {
   const router = Router();
 
-  router.get("/", (req, res) => {
+  router.get("/", accessController, (req, res) => {
     res.render("cadastro", { cadSucess: false, userExist: false });
   });
 
-  router.post("/", async (req, res) => {
+  router.post("/", accessController, async (req, res) => {
     const { nome, email, senha } = req.body as CadastroDto;
     const dbUser = await db.users.findFirst({
       where: { user_email: email },

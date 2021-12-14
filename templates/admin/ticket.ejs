@@ -12,18 +12,20 @@
         <th>E-mail</th>
         <th>Assunto</th>
         <th>Mensagem</th>
-        <th>Serviços ativos</th>
+        <th>Tipo de Cliente</th>
+        <th>Status Ticket</th>
         <th>Ações</th>
       </tr>
     </thead>
     <tbody>
-      <% tickets.forEach(tickets => { %>
+      <% tickets.forEach(ticket => { %>
       <tr>
-        <td><%= tickets.user_name %></td>
-        <td><%= tickets.user_email %></td>
-        <td><%= tickets.user_message %></td>
-        <td><%= tickets.user_services %></td>
-        <td class="plano"><%= loja.plano %></td>
+        <td><%= ticket.usuarioModel.user_name %></td>
+        <td><%= ticket.usuarioModel.user_email %></td>
+        <td><%= ticket.assunto %></td>
+        <td><%= ticket.mensagem %></td>
+        <td class="plano"><%= ticket.tipoCliente %></td>
+        <td class="plano"><%= ticket.status %></td>
         <td>
           <a class="aa" href="">Editar</a><br /><a class="aa" href=""
             >Suspender</a

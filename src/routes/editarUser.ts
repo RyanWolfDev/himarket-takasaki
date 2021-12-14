@@ -2,13 +2,12 @@ import { Controller } from "../controlers_handler";
 import { Router } from "express";
 import { CadastroDto } from "../models";
 import bycript from "bcrypt";
+import { accessController } from "../middlewares";
 
 const editarUser: Controller = (db) => {
   const router = Router();
 
-  router.get("/", async (req, res) => {
-    if (!req.session.idDb) return res.redirect("/login");
-
+  router.get("/", accessController, async (req, res) => {
     const userData = await db.users.findFirst({
       where: {
         user_id: req.session.idDb,
@@ -22,9 +21,7 @@ const editarUser: Controller = (db) => {
     });
   });
 
-  router.post("/", async (req, res) => {
-    if (!req.session.idDb) return res.redirect("/login");
-
+  router.post("/", accessController, async (req, res) => {
     const { email, nome, senha } = req.body as CadastroDto;
 
     const conflicts = await db.users.count({

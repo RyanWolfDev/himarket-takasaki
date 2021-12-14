@@ -31,3 +31,14 @@ export enum AdmLevel {
   subuser,
   admin,
 }
+
+export interface TicketDto {
+  assunto: string;
+  mensagem: string;
+}
+
+export enum StatusTicket {
+  aberto,
+  fechado,
+  atendendo,
+}

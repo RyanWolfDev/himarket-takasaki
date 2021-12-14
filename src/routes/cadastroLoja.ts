@@ -2,25 +2,24 @@ import { Controller } from "../controlers_handler";
 import { Router } from "express";
 import dayjs from "dayjs";
 import { CadastroLojaDto } from "../models";
+import { accessController } from "../middlewares";
 
 const novaLoja: Controller = (db) => {
   const router = Router();
 
-  router.get("/", (req, res) => {
-    if (!req.session.idDb) return res.redirect("/login");
-
+  router.get("/", accessController, (req, res) => {
     res.render("cadastroLoja", {
       lojaExist: false,
       planoFree: false,
     });
   });
 
-  router.post("/", async (req, res) => {
+  router.post("/", accessController, async (req, res) => {
     const cad = req.body as CadastroLojaDto;
     const now = dayjs();
     const expireDate = now.add(1, "year");
 
-    if (!req.session.idDb) return res.redirect("/login");
+    if (!req.session.idDb) return;
 
     if (cad.plano === "gratis") {
       const lojasPremium = await db.lojas.count({

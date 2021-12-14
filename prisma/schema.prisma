@@ -14,7 +14,8 @@ model Users {
   user_password String @db.VarChar(255)
   permissions   Int    @default(0)
 
-  lojas Lojas[]
+  lojas   Lojas[]
+  tickets Tickets[]
 }
 
 model Lojas {
@@ -38,4 +39,13 @@ model Lojas {
   redes             String? @db.VarChar(255)
   modulos           String? @db.VarChar(255)
   integracao        String  @db.VarChar(255)
+}
+
+model Tickets {
+  id           Int    @id @default(autoincrement())
+  usuario      Int
+  usuarioModel Users  @relation(fields: [usuario], references: [user_id])
+  assunto      String @db.VarChar(50)
+  mensagem     String @db.Text
+  status       Int    @default(0)
 }

@@ -16,3 +16,12 @@ export function adminAcessController(
     return next();
   }
 }
+
+export function accessController(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  if (!req.session.idDb) return res.redirect("/login");
+  return next();
+}
