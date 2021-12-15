@@ -1,0 +1,140 @@
+<h2 class="h2">Módulos de pagamentos</h2>
+<div class="center">
+</div>
+<div class="table-wrapper">
+  <table class="fl-table">
+    <thead>
+      <tr>
+        <th>Modulo</th>
+        <th>E-mail configurado</th>
+        <th>Estado</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+            PagSeguro
+          </td>
+          <td>
+            E-mail configurado (variavel)
+          </td>
+          <td>
+            Estado (Não instalado, Instalado)
+          </td>
+          <td class="plano">
+            <%= loja.plano %>
+          </td>
+          <td><a class="aa" href="">Instalar</a><br><a class="aa" href="">Configurar</a><a class="aa" href="">Desinstalar</a>
+          </td>
+        </tr>
+      <% }); %>
+    <tbody>
+  </table>
+</div>
+<style>
+  aa {
+    /*background:linear-gradient(to bottom, #353535 5%, #6c7c7c 100%);
+	background-color:#353535;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;*/
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #353535;
+    font-family: Arial;
+    font-size: 10px;
+    font-weight: bold;
+    /*padding:3px 3px;*/
+    text-decoration: none;
+  }
+
+  a {
+    /*background:linear-gradient(to bottom, #353535 5%, #6c7c7c 100%);
+        background-color:#353535;
+        border-radius:5px;
+        border:1px solid #566963;
+        display:inline-block;*/
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 10px;
+    font-weight: bold;
+    /*padding:3px 3px;*/
+    text-decoration: none;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black;
+    padding: 15px 0;
+  }
+
+
+  /* Table Styles */
+
+  .table-wrapper {
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+  }
+
+  .fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+  }
+
+  .fl-table td,
+  .fl-table th {
+    text-align: center;
+    padding: 8px;
+  }
+
+  .fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+  }
+
+  .fl-table thead th {
+    color: #ffffff;
+    background: #4FC3A1;
+  }
+
+
+  .fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+  }
+
+  .fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+  }
+
+  .novaloja{
+    text-align: center;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black;
+    padding: 12px 0;
+  }
+
+  .center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .plano {
+    text-transform: capitalize;
+  }
+</style>
